@@ -1,0 +1,41 @@
+.table-footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.page-info {
+    margin-right: 15px;
+}
+
+.pagination {
+    min-width: 350px;
+    width: 600px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.pagination a,
+.pagination-number,
+.pagination-button {
+    color: black;
+    border: 1.5px solid royalblue;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    background: white;
+}
+
+.pagination .disabled {
+    background-color: rgb(161, 161, 161);
+}
+
+.pagination .selected {
+    background-color: royalblue;
+    color: white;
+    box-shadow: 0 0 15px rgba(37, 150, 255, 0.78);
+    font-weight: bold;
+}

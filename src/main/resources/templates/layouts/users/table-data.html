@@ -1,0 +1,30 @@
+<tbody th:fragment="table-data">
+  <!-- table data -->
+  <tr th:each="user : ${users}">
+    <td data-th="ID" th:text="${user.id}"></td>
+
+    <td th:data-th="#{user.username}" th:text="${user.userName}"></td>
+
+    <td th:data-th="#{user.name}" th:text="${user.firstName}"></td>
+
+    <td th:data-th="#{user.lastname}" th:text="${user.lastName}"></td>
+
+    <td th:data-th="#{user.email}" th:text="${user.email}"></td>
+
+    <td th:data-th="#{user.role}">
+      <ul>
+        <li th:each="role : ${user.roles}" th:text="${role.name}"></li>
+      </ul>
+    </td>
+
+    <td th:data-th="#{action.actions}" sec:authorize="hasRole('ROLE_ADMIN')">
+      <a class="button-edit" th:href="@{/users/edit/} + ${user.id}"
+        >[[ #{action.edit} ]]</a
+      >
+      <a class="button-delete" th:href="@{/users/delete/} + ${user.id}"
+        >[[ #{action.delete} ]]</a
+      >
+    </td>
+    <!-- table data -->
+  </tr>
+</tbody>

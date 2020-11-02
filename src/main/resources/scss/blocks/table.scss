@@ -1,0 +1,150 @@
+.table-list {
+    background-color: rgb(199, 199, 199);
+    font-family: 'Arial';
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 300px;
+    border-radius: 1em;
+}
+
+.table-list th {
+    background: royalblue;
+    color: $text-color;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    display: none;
+}
+
+.table-list ul {
+    list-style: none;
+
+    @include laptop {
+        width: auto;
+    }
+}
+
+.table-list td {
+    color: black;
+    display: block;
+    padding-left: 25%;
+
+
+    &:first-child {
+        padding-top: 2em;
+    }
+
+    &:last-child {
+        padding-bottom: 2em;
+    }
+
+    &:before {
+        content: attr(data-th)": "; // who knew you could do this? The internet, that's who.
+        font-weight: bold;
+        // optional stuff to make it look nicer
+        width: 20%; // magic number :( adjust according to your own content
+
+
+        // end options
+        @include laptop {
+            display: none;
+        }
+
+    }
+}
+
+.table-list tr {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+    @include laptop {
+        border: none;
+    }
+}
+
+.table-list th,
+.table-list td {
+    text-align: left;
+    font-size: 1.2em;
+
+
+    @include laptop {
+        padding: 1em 0.5em !important;
+        font-size: 0.90em;
+        text-align: center;
+        display: table-cell;
+    }
+}
+
+.table-list tr:nth-child(even) {
+    background: #afafaf;
+}
+
+.table-list tr:hover {
+    background: #f4f4f4;
+}
+
+.table-list a {
+    text-decoration: none;
+
+}
+
+.table-list th a {
+    color: white;
+}
+
+.table-list th a:hover {
+    color: rgb(192, 189, 189);
+}
+
+.table-list i {
+    margin-left: 3px;
+}
+
+.button-edit,
+.button-delete {
+    display: inline-block;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+
+    @include laptop {
+        min-width: 85px;
+    }
+}
+
+.button-edit {
+    background-color: yellow;
+    color: black;
+    width: 80px;
+}
+
+.button-delete {
+    background-color: red;
+    color: white;
+    width: 95px;
+
+}
+
+.table-empty {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 8%;
+
+}
+
+.table-empty__text {
+    color: $text-color;
+    font-size: 25px;
+}
+
+.table-empty__button {
+    color: white;
+    background-color: red;
+    padding: 13px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-left: -15px;
+}

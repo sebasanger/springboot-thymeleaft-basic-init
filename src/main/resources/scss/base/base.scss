@@ -1,0 +1,34 @@
+.main-wrapper {
+    background-color: $background-color;
+    color: $text-color;
+    min-height: 100vh;
+    font-family: $main-font, sans-serif;
+
+    @include laptop {
+        display: grid;
+        grid-template-columns: 10% 90%;
+        grid-template-rows: 60px 1fr;
+
+    }
+}
+
+.main-content {
+    padding: 0.5rem 1rem;
+
+    @include laptop {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        padding: 0 3rem;
+
+    }
+
+}
+
+.principal {
+    background-color: $dark-color;
+    height: initial;
+    position: relative;
+    padding-bottom: 30px;
+    min-height: 80vh;
+
+}

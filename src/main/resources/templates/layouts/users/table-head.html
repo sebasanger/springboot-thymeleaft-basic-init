@@ -1,0 +1,50 @@
+<div th:fragment="table-head" class="table-head">
+    <!-- Filter -->
+    <div th:if="${filterBy.empty}">
+        <form th:action="@{/users/list/page/}+ ${currentPage}" method="GET">
+            <input type="search" class="filter" name="filter" th:placeholder="#{user.filter-placeholder}" />
+            <input type="hidden" name="sortField" th:value="${sortField}" />
+            <input type="hidden" name="sortDir" th:value="${sortDir}" />
+            <input type="hidden" name="pageSize" th:value="${pageSize}" />
+        </form>
+    </div>
+    <!-- Filter -->
+
+    <!-- Reset filter -->
+    <div th:if="${!filterBy.empty}">
+        <form th:action="@{/users/list/page/}+ ${currentPage}" method="GET">
+            <input type="hidden" name="pageSize" th:value="${pageSize}" />
+            <input type="hidden" name="filter" value="" />
+            <input type="hidden" name="sortField" th:value="${sortField}" />
+            <input type="hidden" name="sortDir" th:value="${sortDir}" />
+            <input type="submit" th:value="#{list.reset-filter}" class="btn btn-sm btn-danger" />
+        </form>
+    </div>
+    <!-- Reset filter -->
+
+    <!-- table info -->
+    <div class="order-info">
+        <span th:text="#{list.order-init}">Order by</span> [[${sortField}]]
+        <span th:text="#{list.order-finish}">in order</span> [[${sortDir}]]
+    </div>
+    <!-- table info -->
+
+    <!-- Items per page -->
+    <div class="page-size">
+        <form th:action="@{/users/list/page/1}" method="GET">
+            <label for="pageSize" th:text="#{list.per-page}">Users per page:</label>
+            <select id="pageSize" name="pageSize" onchange="submit();">
+        <option
+          th:each="i : ${#numbers.sequence(5, 15)}"
+          th:value="${i}"
+          th:text="${i}"
+          th:selected="${i==pageSize}"
+        ></option>
+      </select>
+            <input type="hidden" name="filter" th:value="${filterBy}" />
+            <input type="hidden" name="sortField" th:value="${sortField}" />
+            <input type="hidden" name="sortDir" th:value="${sortDir}" />
+        </form>
+    </div>
+    <!-- Items per page -->
+</div>

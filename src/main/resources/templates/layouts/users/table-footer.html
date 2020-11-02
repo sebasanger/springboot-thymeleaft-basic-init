@@ -1,0 +1,91 @@
+<div class="table-footer" th:fragment="table-footer">
+  <div class="pagination">
+    <!--First-->
+    <a
+      th:if="${currentPage > 1}"
+      th:href="@{'/users/list/page/1' + '?sortField='+ ${sortField} +'&sortDir=' + ${sortDir} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy}}"
+      class="btn btn-warning mr-2"
+      th:text="#{list.first}"
+      >First</a
+    >
+    <span
+      th:unless="${currentPage > 1}"
+      class="pagination-button disabled"
+      th:text="#{list.first}"
+      >First</span
+    >
+    <!--First-->
+
+    <!--previus-->
+    <a
+      th:if="${currentPage > 1}"
+      th:href="@{'/users/list/page/' + ${currentPage -1} + '?sortField='+ ${sortField} +'&sortDir=' + ${sortDir} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy}}"
+      class="btn btn-success mr-4"
+      th:text="#{list.previus}"
+      >Previus</a
+    >
+    <span
+      th:unless="${currentPage > 1}"
+      class="pagination-button disabled"
+      th:text="#{list.previus}"
+      >Previus</span
+    >
+    <!--previus-->
+
+    <!--Numbers of pages-->
+    <span th:each="i : ${#numbers.sequence(currentPage -2, currentPage + 2)}">
+      <div th:if="${ i > 0}">
+        <div th:if="${ totalPages >= i}">
+          <a
+            th:if="${i != currentPage}"
+            th:href="@{'/users/list/page/' + ${i}+ '?sortField='+ ${sortField} +'&sortDir=' + ${sortDir} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy}}"
+            class="pagination-number"
+            >[[${i}]]</a
+          >
+          <span
+            th:unless="${i != currentPage}"
+            class="pagination-number selected"
+            >[[${i}]]</span
+          >
+        </div>
+      </div>
+    </span>
+    <!--Numbers of pages-->
+
+    <!--Next-->
+    <a
+      th:if="${totalPages > currentPage}"
+      th:href="@{'/users/list/page/' + ${currentPage + 1} + '?sortField='+ ${sortField} +'&sortDir=' + ${sortDir} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy} }"
+      th:text="#{list.next}"
+      >Next</a
+    >
+    <span
+      th:unless="${totalPages > currentPage}"
+      class="pagination-button disabled"
+      th:text="#{list.next}"
+      >Next</span
+    >
+    <!--Next-->
+
+    <!--Last-->
+    <a
+      th:if="${totalPages > currentPage}"
+      th:href="@{'/users/list/page/' + ${totalPages} + '?sortField='+ ${sortField} +'&sortDir=' + ${sortDir} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy}}"
+      th:text="#{list.last}"
+      >Last</a
+    >
+    <span
+      th:unless="${totalPages > currentPage}"
+      class="pagination-button disabled"
+      th:text="#{list.last}"
+      >Last</span
+    >
+    <!--Last-->
+  </div>
+  <!-- table info -->
+  <div class="page-info">
+    <span th:text="#{list.page}">Actual page</span> [[${currentPage}]]
+    <span th:text="#{list.of}">Total pages</span> [[${totalPages}]]
+  </div>
+  <!-- table info -->
+</div>

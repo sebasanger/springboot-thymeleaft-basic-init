@@ -1,0 +1,44 @@
+.main-menu {
+    @include reset-list;
+
+    border-top: 1px solid $dark-color;
+    background-color: $dark-color-2;
+
+    @include laptop {
+        border: none;
+        height: 100vh;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: transparent;
+    }
+}
+
+.main-menu__item {
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 2.5;
+    border-bottom: 1px solid $dark-color;
+
+    @include laptop {
+        line-height: 3;
+        border: none;
+
+    }
+}
+
+.main-menu__link {
+    text-decoration: none;
+    color: $text-color;
+    font-size: 1.2rem;
+}
+
+.main-link--active {
+    color: $primary-color;
+
+    @include laptop {
+        text-shadow: 0 0 30px rgb(255, 4, 4);
+    }
+
+}

@@ -1,0 +1,56 @@
+<!-- table head titles -->
+<tr th:fragment="table-titles">
+  <th>
+    <a
+      th:href="@{'/users/list/page/'+${currentPage} +'?sortField=id&sortDir=' + ${reverseSort} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy}}"
+    >
+      #<i
+        class="fas fa-sort"
+        th:classappend="${(sortField == 'id' && sortDir == 'asc' ? 'fas fa-sort-up' : '') + (sortField == 'id' && sortDir == 'desc' ? 'fas fa-sort-down' : '')}"
+      ></i
+    ></a>
+  </th>
+  <th>
+    <a
+      th:href="@{'/users/list/page/'+${currentPage} +'?sortField=userName&sortDir=' + ${reverseSort} + '&pageSize=' + ${pageSize}  + '&filter=' + ${filterBy} }"
+    >
+      [[#{user.username} ]]<i
+        class="fas fa-sort"
+        th:classappend="${(sortField == 'userName' && sortDir == 'asc' ? 'fas fa-sort-up' : '') + (sortField == 'userName' && sortDir == 'desc' ? 'fas fa-sort-down' : '')}"
+      ></i
+    ></a>
+  </th>
+  <th>
+    <a
+      th:href="@{'/users/list/page/'+${currentPage} +'?sortField=firstName&sortDir=' + ${reverseSort} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy}  }"
+    >
+      [[#{user.name} ]]<i
+        class="fas fa-sort"
+        th:classappend="${(sortField == 'firstName' && sortDir == 'asc' ? 'fas fa-sort-up' : '') + (sortField == 'firstName' && sortDir == 'desc' ? 'fas fa-sort-down' : '')}"
+      ></i
+    ></a>
+  </th>
+  <th>
+    <a
+      th:href="@{'/users/list/page/'+${currentPage} +'?sortField=lastName&sortDir=' + ${reverseSort} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy} }"
+    >
+      [[#{user.lastname} ]]<i
+        class="fas fa-sort"
+        th:classappend="${(sortField == 'lastName' && sortDir == 'asc' ? 'fas fa-sort-up' : '') + (sortField == 'lastName' && sortDir == 'desc' ? 'fas fa-sort-down' : '')}"
+      ></i
+    ></a>
+  </th>
+  <th>
+    <a
+      th:href="@{'/users/list/page/'+${currentPage} +'?sortField=email&sortDir=' + ${reverseSort} + '&pageSize=' + ${pageSize} + '&filter=' + ${filterBy} }"
+    >
+      [[#{user.email} ]]<i
+        class="fas fa-sort"
+        th:classappend="${(sortField == 'email' && sortDir == 'asc' ? 'fas fa-sort-up' : '') + (sortField == 'email' && sortDir == 'desc' ? 'fas fa-sort-down' : '')}"
+      ></i
+    ></a>
+  </th>
+  <th>[[ #{user.role} ]]</th>
+  <th sec:authorize="hasRole('ROLE_ADMIN')">[[ #{action.actions} ]]</th>
+</tr>
+<!-- table head titles -->

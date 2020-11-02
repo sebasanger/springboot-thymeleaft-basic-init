@@ -1,0 +1,43 @@
+.logo {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 110;
+    top: -1px;
+    left: 5px;
+
+    @include laptop {
+        top: 10px;
+        left: 1%;
+        width: 8%;
+        z-index: 40;
+    }
+}
+
+.logo img {
+    max-width: 100%;
+}
+
+.logo-login {
+    width: 20%;
+    height: 30%;
+    position: relative;
+    top: 10px;
+    left: 50%;
+    padding: 5px;
+    transform: translateX(-50%);
+    background-color: rgba(255, 0, 0, 0.616);
+    border-radius: 15px;
+
+    @include laptop {
+        width: 150px;
+        height: 150px;
+    }
+
+}
+
+.logo-login img {
+    max-width: 100%;
+}

@@ -1,0 +1,32 @@
+//guias de eestilo
+@import "config/colors.scss";
+@import "config/fonts.scss";
+//mixins
+@import "mixins/breakpoints.scss";
+@import "mixins/reset-list.scss";
+//estilos base
+@import "base/normalize.scss";
+@import "base/base.scss";
+//estilos generales
+@import "blocks/header.scss";
+@import "blocks/sidebar.scss";
+@import "blocks/topbar.scss";
+@import "blocks/toggle-menu.scss";
+@import "blocks/logo.scss";
+@import "blocks/menu.scss";
+@import "blocks/lightbox.scss";
+@import "blocks/forms.scss";
+@import "blocks/titles.scss";
+@import "blocks/social.scss";
+@import "blocks/table.scss";
+@import "blocks/pagination.scss";
+@import "blocks/table-extras.scss";
+@import "blocks/buttons.scss";
+@import "blocks/messages.scss";
+@import "blocks/delete-modal.scss";
+//pages
+@import "pages/users-control.scss";
+@import "pages/user-form.scss";
+@import "pages/home.scss";
+@import "pages/login.scss";
+@import "pages/error.scss";

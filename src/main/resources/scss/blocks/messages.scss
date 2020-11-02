@@ -1,0 +1,50 @@
+.login-messages {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.alert-danger,
+.alert-success {
+    width: 100%;
+    padding: 8px 25px;
+    font-style: italic;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+.alert-success {
+    background-color: green;
+    color: white;
+    box-shadow: 0 0 35px rgba(1, 165, 1, 0.493);
+}
+
+.alert-danger {
+    background-color: rgb(255, 0, 0);
+    box-shadow: 0 0 30px rgb(187, 1, 1);
+    color: white;
+}
+
+.message-error-principal,
+.message-success-principal {
+    text-align: center;
+    overflow: hidden;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.message-error-principal {
+    color: red;
+    text-shadow: 0 0 6px rgba(255, 51, 0, 0.554);
+}
+
+.message-success-principal {
+    text-shadow: 0 0 6px rgba(0, 255, 55, 0.561);
+    color: rgb(0, 255, 0);
+}

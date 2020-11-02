@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layouts/head :: head(headtitle=#{login.title})"></head>
+  <title>Login Page</title>
+
+  <body>
+    <div class="login-main">
+      <div class="sidenav">
+        <div class="login-main-text">
+          <div class="logo-login">
+            <img th:src="@{/img/ss-icon.jpg}" alt="logo" />
+          </div>
+          <h2 th:text="#{main.title}">SEGASA</h2>
+          <span th:text="#{login.title}">login</span>
+          <p th:text="#{login.instructive}">
+            Login or register from here to access.
+          </p>
+        </div>
+      </div>
+      <div class="login">
+        <div class="login-form">
+          <!-- Login Form -->
+          <form th:action="@{/authenticateTheUser}" method="POST">
+            <!-- Place for messages: error, alert etc ... -->
+            <div class="login-messages">
+              <!-- Check for login error -->
+              <span
+                th:if="${param.error}"
+                class="alert-danger"
+                th:text="#{login.login-incorrect}"
+              >
+                Invalid username and password</span
+              >
+              <!-- Check for login error -->
+              <!-- Check for logout -->
+              <span
+                th:if="${param.logout}"
+                class="alert-success"
+                th:text="#{login.exit-succes}"
+              >
+                You have been logged out.
+              </span>
+              <!-- Check for logout -->
+              <!--Messages-->
+              <span
+                th:if="${messageError}"
+                class="alert-danger"
+                th:text="${messageError}"
+              >
+                Error</span
+              >
+              <span
+                th:if="${messageSuccess}"
+                class="alert-success"
+                th:text="${messageSuccess}"
+              >
+                Success
+              </span>
+              <!--Messages-->
+            </div>
+
+            <!-- User name -->
+            <div class="form__fields">
+              <div>
+                <label
+                  class="form__label"
+                  for="username"
+                  th:text="#{user.username}"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  class="form__input"
+                />
+              </div>
+              <!-- User name -->
+
+              <!-- Password -->
+              <div>
+                <label
+                  class="form__label"
+                  for="password"
+                  th:text="#{user.password}"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="form__input"
+                />
+              </div>
+              <!-- Password -->
+
+              <!-- Login/Submit Button -->
+              <div>
+                <button
+                  type="submit"
+                  class="login__button-access"
+                  th:text="#{login.button-access}"
+                >
+                  Login
+                </button>
+              </div>
+              <!-- Login/Submit Button -->
+              <!-- Forget password -->
+              <a
+                th:if="${param.error}"
+                th:href="@{/forgot_password}"
+                class="login__button-extra"
+                th:text="#{login.resetPassword}"
+                >reset</a
+              >
+              <!-- Forget password -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

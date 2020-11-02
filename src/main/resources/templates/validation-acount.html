@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://thymeleaf.org/extras/spring-securiry"
+>
+  <head th:replace="layouts/head :: head(headtitle=#{user.validate.tittle})">
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+      <header th:replace="layouts/header :: header"></header>
+
+      <div class="main-content">
+        <h1 class="title" th:text="#{user.validate.tittle}">Validate acount</h1>
+        <div class="principal">
+          <div th:if="${messageError}" class="message-error-principal">
+            <span th:text="${messageError}"></span>
+          </div>
+          <div th:if="${messageSuccess}" class="message-success-principal">
+            <span th:text="${messageSuccess}"></span>
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="layouts/scripts :: scripts"></div>
+    </div>
+  </body>
+</html>

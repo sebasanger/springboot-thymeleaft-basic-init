@@ -1,0 +1,53 @@
+.toggle-menu {
+    height: 40px;
+    width: 40px;
+    background-color: #777;
+
+    @include laptop {
+        display: none;
+    }
+
+}
+
+.toggle-menu .toggle-menu_icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+}
+
+.toggle-menu .toggle-menu_icon .first-bar,
+.toggle-menu .toggle-menu_icon .second-bar,
+.toggle-menu .toggle-menu_icon .third-bar {
+    width: 25px;
+    height: 3px;
+    background-color: $text-color;
+    border-radius: 30px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.2s;
+}
+
+
+.toggle-menu_icon.show .first-bar {
+    transform: rotate(-40deg);
+    position: relative;
+    left: -13px;
+    top: 10px;
+    background-color: $danger-color;
+}
+
+.toggle-menu_icon.show .second-bar {
+    transform: rotate(40deg);
+    position: relative;
+    left: -12px;
+    top: -1px;
+    background-color: $danger-color;
+}
+
+.toggle-menu_icon.show .third-bar {
+    width: 0;
+}

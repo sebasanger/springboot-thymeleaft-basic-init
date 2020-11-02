@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://thymeleaf.org/extras/spring-securiry"
+>
+  <head th:replace="layouts/head :: head(headtitle=#{bar.tittle.home})"></head>
+
+  <body>
+    <div class="main-wrapper">
+      <header th:replace="layouts/header :: header"></header>
+
+      <div th:replace="layouts/sidebar :: sidebar"></div>
+
+      <div class="main-content">
+        <h1 class="title" th:text="#{bar.tittle.home}">Home</h1>
+        <div class="principal">
+          <!--MESSAGES-->
+          <div th:if="${messageError != null}" class="message-error-principal">
+            <span th:text="${messageError}"></span>
+          </div>
+          <div
+            th:if="${messageSuccess != null}"
+            class="message-success-principal"
+          >
+            <span th:text="${messageSuccess}"></span>
+          </div>
+          <!--MESSAGES-->
+          <h2 style="text-align: center">{{{{ TODO }}}}</h2>
+        </div>
+      </div>
+
+      <div th:replace="layouts/scripts :: scripts"></div>
+    </div>
+  </body>
+</html>

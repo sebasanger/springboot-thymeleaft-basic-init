@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://thymeleaf.org/extras/spring-securiry"
+>
+  <head
+    th:replace="layouts/head :: head(headtitle=${status +' '+ error})"
+  ></head>
+
+  <body>
+    <div class="main-wrapper">
+      <header th:replace="layouts/header :: header"></header>
+
+      <div th:replace="layouts/sidebar :: sidebar"></div>
+
+      <div class="main-content">
+        <h1 class="title" th:text="${error}">Error page</h1>
+        <div class="principal">
+          <div class="error-page">
+            <h2
+              class="error-page__subtittle"
+              th:text="#{errorPage.general.subtitle}"
+            ></h2>
+            <p th:if="message" class="error-page__text" th:text="${message}">
+              Message
+            </p>
+            <a
+              th:href="@{/}"
+              th:text="#{errorPage.general.button}"
+              class="error-page__button"
+              >Go back home</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div th:replace="layouts/scripts :: scripts"></div>
+    </div>
+  </body>
+</html>

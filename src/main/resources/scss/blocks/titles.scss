@@ -1,0 +1,11 @@
+.title {
+    padding: 0 1rem;
+    border-bottom: 1px solid $text-color;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    @include laptop {
+        padding: 0.5rem;
+        border-top: 1px solid $text-color;
+    }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://thymeleaf.org/extras/spring-securiry"
+>
+  <head th:replace="layouts/head :: head(headtitle=#{user.update-acount})">
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+      <header th:replace="layouts/header :: header"></header>
+
+      <div th:replace="layouts/sidebar :: sidebar"></div>
+
+      <div class="main-content">
+        <h1 class="title" th:text="#{user.update-acount}">users control</h1>
+        <div class="principal">
+          <!-- Change password -->
+          <div class="button-update-password">
+            <a
+              th:href="@{'/users/update-password/'+${#authentication.name}}"
+              th:text="#{user.update-password}"
+            >
+              <i class="fas fa-key"></i>
+              <span>Change password</span>
+            </a>
+          </div>
+          <!-- Change password -->
+          <!-- Messages -->
+          <div th:if="${messageError}" class="message-error-principal">
+            <span th:text="${messageError}"></span>
+          </div>
+          <div th:if="${messageSuccess}" class="message-success-principal">
+            <span th:text="${messageSuccess}"></span>
+          </div>
+          <!-- Messages -->
+          <!-- Registration Form -->
+          <form
+            class="form"
+            action="#"
+            th:action="@{/users/save-acount}"
+            th:object="${user}"
+            method="POST"
+          >
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="form__fields">
+              <!-- First name -->
+              <div>
+                <label
+                  for="firstname"
+                  th:text="#{user.name}"
+                  class="form__label"
+                  >First name</label
+                >
+                <input
+                  name="firstname"
+                  type="text"
+                  th:field="*{firstName}"
+                  class="form__input"
+                  th:errorclass="fieldError"
+                  required
+                />
+                <div
+                  th:if="${#fields.hasErrors('firstName')}"
+                  class="form__error"
+                >
+                  <ul>
+                    <li
+                      th:each="err : ${#fields.errors('firstName')}"
+                      th:text="#{user.name} +' '+ ${err}"
+                    ></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- First name -->
+
+              <!-- User name -->
+              <div>
+                <label
+                  for="userName"
+                  th:text="#{user.username}"
+                  class="form__label"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  name="userName"
+                  th:field="*{userName}"
+                  class="form__input"
+                  required
+                />
+                <div
+                  th:if="${#fields.hasErrors('userName')}"
+                  class="form__error"
+                >
+                  <ul>
+                    <li
+                      th:each="err : ${#fields.errors('userName')}"
+                      th:text="#{user.username} +' '+ ${err}"
+                    ></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- User name -->
+            </div>
+
+            <div class="form__fields">
+              <!-- Last name -->
+              <div>
+                <label
+                  for="lastname"
+                  th:text="#{user.lastname}"
+                  class="form__label"
+                  >Last name</label
+                >
+                <input
+                  name="lastname"
+                  type="text"
+                  th:field="*{lastName}"
+                  class="form__input"
+                  th:errorclass="fieldError"
+                  required
+                />
+                <div
+                  th:if="${#fields.hasErrors('lastName')}"
+                  class="form__error"
+                >
+                  <ul>
+                    <li
+                      th:each="err : ${#fields.errors('lastName')}"
+                      th:text="#{user.lastname} +' '+ ${err}"
+                    ></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Last name -->
+              <!-- Email -->
+              <div>
+                <label for="email" th:text="#{user.email}" class="form__label"
+                  >Email</label
+                >
+                <input
+                  name="email"
+                  type="text"
+                  th:field="*{email}"
+                  class="form__input"
+                  th:errorclass="fieldError"
+                  required
+                />
+                <div th:if="${#fields.hasErrors('email')}" class="form__error">
+                  <ul>
+                    <li
+                      th:each="err : ${#fields.errors('email')}"
+                      th:text="#{user.email} +' '+ ${err}"
+                    ></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Email -->
+            </div>
+
+            <!-- Register Button -->
+
+            <button type="submit" class="form__submit">
+              [[#{action.save}]]
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div th:replace="layouts/scripts :: scripts"></div>
+    </div>
+  </body>
+</html>

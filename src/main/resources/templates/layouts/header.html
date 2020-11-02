@@ -1,0 +1,54 @@
+<header th:fragment="header" class="header" id="header">
+  <a class="logo" th:href="@{/}"
+    ><img th:src="@{/img/ss-icon.jpg}" alt="logo"
+  /></a>
+
+  <div class="topbar" id="topbar">
+    <!--TODO-->
+    <div sec:authorize="isAuthenticated()" class="topbar__icon">
+      <p>
+        <a
+          class="topbar__text"
+          th:href="@{/(lang=es)}"
+          th:classappend="${(#locale.toString().equals('es')) ? 'main-link--active' : ''}"
+          >ES</a
+        >
+        |
+        <a
+          class="topbar__text"
+          th:href="@{/(lang=en)}"
+          th:classappend="${(#locale.toString().equals('en')) ? 'main-link--active' : ''}"
+          >EN</a
+        >
+      </p>
+      <!--TODO-->
+    </div>
+
+    <div sec:authorize="isAuthenticated()" class="topbar__icon">
+      <a
+        class="topbar__text"
+        th:href="@{'/users/update-acount/'+${#authentication.name}}"
+        th:classappend="${(#httpServletRequest.requestURL.toString().contains('update-acount')) ? 'main-link--active' : ''}"
+      >
+        <i class="fa fa-user"></i>
+        <span sec:authentication="name">User</span>
+      </a>
+    </div>
+
+    <div sec:authorize="isAuthenticated()" class="topbar__icon">
+      <form method="POST" th:action="@{/logout}">
+        <a class="topbar__text" onclick="this.parentNode.submit();"
+          ><i class="fa fa-door-closed"></i> [[ #{bar.exit} ]]</a
+        >
+      </form>
+    </div>
+
+    <div class="toggle-menu">
+      <div class="toggle-menu_icon" id="toggle-menu">
+        <div class="first-bar"></div>
+        <div class="second-bar"></div>
+        <div class="third-bar"></div>
+      </div>
+    </div>
+  </div>
+</header>

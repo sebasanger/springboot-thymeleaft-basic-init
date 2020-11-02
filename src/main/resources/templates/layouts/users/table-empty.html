@@ -1,0 +1,24 @@
+<div
+  th:fragment="table-empty"
+  th:if="${users == null or users.empty}"
+  class="table-empty"
+>
+  <span th:text="#{list.list-empty}" class="table-empty__text"
+    >Lista vacia</span
+  >
+  <!-- Reset filter -->
+  <div th:if="${!filterBy.empty}">
+    <form th:action="@{/users/list/page/}+ ${currentPage}" method="GET">
+      <input type="hidden" name="pageSize" th:value="${pageSize}" />
+      <input type="hidden" name="filter" value="" />
+      <input type="hidden" name="sortField" th:value="${sortField}" />
+      <input type="hidden" name="sortDir" th:value="${sortDir}" />
+      <input
+        type="submit"
+        th:value="#{list.reset-filter}"
+        class="table-empty__button"
+      />
+    </form>
+  </div>
+  <!-- Reset filter -->
+</div>

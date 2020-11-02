@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://thymeleaf.org/extras/spring-securiry"
+>
+  <head th:replace="layouts/head :: head(headtitle=#{user.list-user})"> </head>
+
+  <body>
+    <div class="main-wrapper">
+      <header th:replace="layouts/header :: header"></header>
+
+      <div th:replace="layouts/sidebar :: sidebar"></div>
+      <div class="main-content">
+        <h1 class="title" th:text="#{user.list-user}">users control</h1>
+
+        <div class="principal">
+          <!--MESSAGES-->
+          <div th:if="${messageError != null}" class="message-error-principal">
+            <span th:text="${messageError}"></span>
+          </div>
+          <div
+            th:if="${messageSuccess != null}"
+            class="message-success-principal"
+          >
+            <span th:text="${messageSuccess}"></span>
+          </div>
+          <!--MESSAGES-->
+          <!-- button to add -->
+          <div class="buttons">
+            <a
+              th:href="@{/users/add}"
+              class="button-add"
+              th:text="#{action.add}"
+              >Add new</a
+            >
+          </div>
+          <!-- button to add -->
+
+          <div
+            th:if="${users != null and !users.empty}"
+            class="user-control__list"
+          >
+            <div class="table-list__container">
+              <table class="table-list">
+                <thead>
+                  <div
+                    th:replace="layouts/users/table-head :: table-head"
+                  ></div>
+
+                  <!-- table head titles -->
+                  <tr
+                    th:replace="layouts/users/table-titles :: table-titles"
+                  ></tr>
+                  <!-- table head titles -->
+                </thead>
+
+                <!-- table data -->
+                <tbody
+                  th:replace="layouts/users/table-data :: table-data"
+                ></tbody>
+                <!-- table data -->
+              </table>
+
+              <div th:if="${totalPages > 1}">
+                <div
+                  class="table-footer"
+                  th:replace="layouts/users/table-footer :: table-footer"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <!-- in the case of the list is empty -->
+          <div th:replace="layouts/users/table-empty :: table-empty"></div>
+          <!-- in the case of the list is empty -->
+        </div>
+      </div>
+      <div th:replace="layouts/scripts :: scripts"></div>
+    </div>
+  </body>
+</html>

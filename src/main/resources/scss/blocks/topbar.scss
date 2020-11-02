@@ -1,0 +1,48 @@
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    position: relative;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 40px;
+    background-color: $dark-color-2;
+    padding-left: 60px;
+    z-index: 100;
+
+
+    @include laptop {
+        height: 60px;
+        top: 0;
+        left: 100%;
+        transform: translateX(-100%);
+        width: 35vw;
+        justify-content: space-evenly;
+        background-color: transparent;
+    }
+
+    @include desktop {
+        width: 20vw;
+    }
+}
+
+.topbar__icon {
+    width: 120px;
+    padding-top: 3px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.topbar__text {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+@include desktop {
+    .topbar__icon:hover {
+        cursor: pointer;
+    }
+}
